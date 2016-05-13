@@ -2,20 +2,15 @@
 
 ## Overall goal
 
-My summative task will be a combination software and hardware product.
+My summative task will be a simulator designed to test how sturdy a house will be
 
-I will program a sensor attached to an Arduino board. The sensor will be able to detect how hard a person is blowing air toward it (perhaps a pressure sensor? a mic?).
+I will allow the user to input the strength of the beams in the house and how fast the wind accelerates and then it will simulate how long it will take for the house to fall down if at all.
 
-When a person blows on the sensor, this information is transmitted to a Processing sketch.
-
-In the sketch, a visual representation of a "ripe" dandelion will be shown.  The dandelion seeds will disperse on screen in the sketch, simulating the physics of the motion of real dandelion seeds, when someone blows them off the stem in real life.
+If I have time I will give the user the ability to simulate an earthquake and they will imput the magnitude and it will simulate how long it will take for the house to fall down.
 
 ## Sub-goals
 
 * extend Motion class (that we developed earlier together) to allow for force accumulation (wind, gravity, other forces)
-* make the mouse movement translate to a wind force
-* make it so that moving the mouse causes the "seeds" of the dandelion to disperse
-* modify the visual representation of the Motion class to more closely resembly dandelion seeds
-* identify an Arduino sensor that might work to detect air pressure / volume
-* program sensor to send values to Processing sketch
-* translate sensor output to wind force in sketch
+* Allow user inputs
+* modify the visual representation of the Motion class to more closely resemble a house
+
