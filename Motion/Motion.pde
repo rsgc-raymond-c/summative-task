@@ -11,7 +11,7 @@ void setup() {
 
 
   // use a loop to create multiple bricks
-  for (int i = 0; i< Brick.length; i+=1) {
+  for (int i = 0; i< bricks.length; i+=1) {
     int x = 0;
     int y = 0;
     int wid = 0;
@@ -29,7 +29,7 @@ void setup() {
     }
     RVector location = new RVector(x, y);
     RVector dimensions = new RVector(wid, hght);
-    Brick[i] = new Brick(location, dimensions);
+    bricks[i] = new Brick(location, dimensions);
   }
 }
 
@@ -44,7 +44,7 @@ void draw() {
   // display all the bricks
   for (int i = 0; i< bricks.length; i+=1) {
     bricks[i].update();
-    bricks[i].checkGround();
+    //bricks[i].checkGround();
     bricks[i].display();
   }
 }

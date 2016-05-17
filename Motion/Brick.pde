@@ -9,7 +9,7 @@ class Brick {
 
     location = location_;
     dimensions = dimensions_;
-    velocity = new RVector(0, 1);
+    velocity = new RVector(0, 0);
     
   }
 
@@ -28,11 +28,5 @@ class Brick {
     // Display the house at the location (x, y)
       rect(location.x, location.y, dimensions.x, dimensions.y);
   }
- void checkGround() {
-     
-    if (location.y < 0) {
-      velocity.y = 0;
-    }
-    
-  }
+ 
 }
