@@ -2,14 +2,15 @@ class Brick {
 
   RVector location;
   RVector velocity;
-  boolean isActive;
+  RVector dimensions;
 
   // constructor
-  Brick(RVector location_) {
+  Brick(RVector location_, RVector dimensions_) {
 
     location = location_;
-    velocity = new RVector(0, 0);
-    isActive = true;
+    dimensions = dimensions_;
+    velocity = new RVector(0, 1);
+    
   }
 
   // update position
@@ -24,10 +25,14 @@ class Brick {
     stroke(0);
     fill(175);
 
-    // Display the ball at the location (x, y)
-    if (isActive == true) {
-      rect(location.x, location.y, 50, 20);
-    }
+    // Display the house at the location (x, y)
+      rect(location.x, location.y, dimensions.x, dimensions.y);
   }
- 
+ void checkGround() {
+     
+    if (location.y < 0) {
+      velocity.y = 0;
+    }
+    
+  }
 }
