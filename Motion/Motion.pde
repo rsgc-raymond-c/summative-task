@@ -1,5 +1,5 @@
-// Create house and wind vectors.
-Brick bricks[] = new Brick[5];
+// Create a space in memory for many Mover objects
+Brick bricks[] = new Brick[2];
 RVector velocity = new RVector(1, 0);
 
 // Runs once
@@ -16,20 +16,13 @@ void setup() {
     int y = 0;
     int wid = 0;
     int hght = 0;
-    if (i < 2) {
-      x = (i+17)*13+i*50;
-      y = 309;
-      wid = 20;
-      hght = 50;
-    } else if (i == 3) {
+    if (i < 10) {
+      x = (i+14)*18+i*50;
       y = 300;
-      x = 213;
-      wid = 100;
-      hght = 15;
-    }
+
+    } 
     RVector location = new RVector(x, y);
-    RVector dimensions = new RVector(wid, hght);
-    bricks[i] = new Brick(location, dimensions);
+    bricks[i] = new Brick(location);
   }
 }
 
@@ -39,12 +32,12 @@ void draw() {
   // Clear the background
   background(255);
 
-
-
+ 
   // display all the bricks
   for (int i = 0; i< bricks.length; i+=1) {
     bricks[i].update();
-    //bricks[i].checkGround();
+    bricks[i].checkEdges();
     bricks[i].display();
   }
+  
 }

@@ -2,13 +2,11 @@ class Brick {
 
   RVector location;
   RVector velocity;
-  RVector dimensions;
 
   // constructor
-  Brick(RVector location_, RVector dimensions_) {
+  Brick(RVector location_) {
 
     location = location_;
-    dimensions = dimensions_;
     velocity = new RVector(0, 0);
     
   }
@@ -25,8 +23,17 @@ class Brick {
     stroke(0);
     fill(175);
 
-    // Display the house at the location (x, y)
-      rect(location.x, location.y, dimensions.x, dimensions.y);
+    // Display the brick at the location (x, y) with the dimensions (x,y)
+      rect(location.x, location.y, 20,50);
   }
- 
+  // Bounce off edges
+  void checkEdges() {
+    // Bounce if needed
+    if ((location.x > width) || (location.x < 0)) {
+      velocity.x = velocity.x * -1;
+    }
+    if ((location.y > height) || (location.y < 0)) {
+      velocity.y = velocity.y * -1;
+    }
+  }
 }
