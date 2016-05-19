@@ -30,11 +30,14 @@ class Brick {
   }
 
   void bounce() {
-    if (location.y > height) {
+
+    if (location.y+50 > height) {
       // We're reducing velocity ever so slightly 
       // when it hits the bottom of the window
-      velocity.y = velocity.y * -0.95; 
-      location.y = height;
+      velocity.y = velocity.y * -0.8; 
     }
+  }
+  void applyforce() {
+    
   }
 }

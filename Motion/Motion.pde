@@ -32,9 +32,7 @@ void draw() {
 
   // Clear the background
   background(255);
-  roof.update();
-  roof.bounce();
-  roof.display();
+  
 
  
   // display all the bricks
@@ -43,5 +41,7 @@ void draw() {
     bricks[i].bounce();
     bricks[i].display();
   }
-  
+  roof.update();
+  //roof.bounce(bricks[]);
+  roof.display();
 }

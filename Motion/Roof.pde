@@ -23,12 +23,13 @@ class Roof {
     // Display the brick at the location (x, y) with the dimensions (x,y)
     rect(location.x,location.y,60,20);
   }
-  void bounce() {
-    if (location.y > height) {
+  void bounce(Brick b) {
+    int i = 0;
+    if (location.y+20 > height || location.y+20 > b.location.y ) {
       // We're reducing velocity ever so slightly 
       // when it hits the bottom of the window
       velocity.y = velocity.y * -0.5; 
-      location.y = height;
+      
     }
   }
 }
