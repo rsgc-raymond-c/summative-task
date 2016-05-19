@@ -2,19 +2,21 @@ class Brick {
 
   RVector location;
   RVector velocity;
+  RVector gravity;
 
   // constructor
   Brick(RVector location_) {
 
     location = location_;
     velocity = new RVector(0, 0);
-    
+    gravity = new RVector(0,0.01);
   }
 
   // update position
   void update() {
     // Move the ball according to it's speed
     location.add(velocity);
+    velocity.add(gravity);
   }
 
   // show the object
@@ -24,16 +26,15 @@ class Brick {
     fill(175);
 
     // Display the brick at the location (x, y) with the dimensions (x,y)
-      rect(location.x, location.y, 20,50);
+    rect(location.x, location.y, 20, 50);
   }
-  // Bounce off edges
-  void checkEdges() {
-    // Bounce if needed
-    if ((location.x > width) || (location.x < 0)) {
-      velocity.x = velocity.x * -1;
-    }
-    if ((location.y > height) || (location.y < 0)) {
-      velocity.y = velocity.y * -1;
+
+  void bounce() {
+    if (location.y > height) {
+      // We're reducing velocity ever so slightly 
+      // when it hits the bottom of the window
+      velocity.y = velocity.y * -0.95; 
+      location.y = height;
     }
   }
 }

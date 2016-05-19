@@ -1,5 +1,6 @@
 // Create a space in memory for many Mover objects
 Brick bricks[] = new Brick[2];
+Roof roof = new Roof();
 RVector velocity = new RVector(1, 0);
 
 // Runs once
@@ -9,7 +10,7 @@ void setup() {
   size(640, 360);
   background(255);
 
-
+  roof = new Roof();
   // use a loop to create multiple bricks
   for (int i = 0; i< bricks.length; i+=1) {
     int x = 0;
@@ -31,12 +32,15 @@ void draw() {
 
   // Clear the background
   background(255);
+  roof.update();
+  roof.bounce();
+  roof.display();
 
  
   // display all the bricks
   for (int i = 0; i< bricks.length; i+=1) {
     bricks[i].update();
-    bricks[i].checkEdges();
+    bricks[i].bounce();
     bricks[i].display();
   }
   
