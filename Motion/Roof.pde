@@ -24,11 +24,14 @@ class Roof {
     rect(location.x, location.y, 60, 20);
   }
   void bounceBrick(Brick b) {
-    
-    if (location.x > b.location.x && location.x < b.location.x + 20 && location.y+20 > b.location.y && location.y+20 < b.location.y + 50 ) {
-      // We're reducing velocity ever so slightly 
-      // when it hits the bottom of the window
-      velocity.y = velocity.y * -0.8;
+
+    for (float i = location.x; i < location.x +60; i+= 15) {
+      if (i > b.location.x && i < b.location.x + 20 && location.y+20 > b.location.y && location.y+20 < b.location.y + 50 ) {
+        // We're reducing velocity ever so slightly 
+        // when it hits the Brick
+        velocity.y = velocity.y * -0.8;
+        println(60*i);
+      }
     }
   }
   // check for edges
@@ -38,7 +41,7 @@ class Roof {
     if ((location.x > width) || (location.x < 0)) {
       velocity.x = velocity.x * -1;
     }
-    if (location.y+20 > height){
+    if (location.y+20 > height) {
       velocity.y = velocity.y * -0.8;
     }
   }
