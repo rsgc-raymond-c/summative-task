@@ -5,8 +5,8 @@ class Roof {
 
   Roof() {
     velocity = new RVector(0, 0);
-    location = new RVector(320,100);
-    gravity = new RVector(0,0.01);
+    location = new RVector(300, 100);
+    gravity = new RVector(0, 0.01);
   }
   // update position
   void update() {
@@ -21,15 +21,25 @@ class Roof {
     fill(175);
 
     // Display the brick at the location (x, y) with the dimensions (x,y)
-    rect(location.x,location.y,60,20);
+    rect(location.x, location.y, 60, 20);
   }
-  void bounce(Brick b) {
-    int i = 0;
-    if (location.y+20 > height || location.y+20 > b.location.y ) {
+  void bounceBrick(Brick b) {
+    
+    if (location.x > b.location.x && location.x < b.location.x + 20 && location.y+20 > b.location.y && location.y+20 < b.location.y + 50 ) {
       // We're reducing velocity ever so slightly 
       // when it hits the bottom of the window
-      velocity.y = velocity.y * -0.5; 
-      
+      velocity.y = velocity.y * -0.8;
+    }
+  }
+  // check for edges
+  void checkEdges() {
+
+    // Bounce if needed
+    if ((location.x > width) || (location.x < 0)) {
+      velocity.x = velocity.x * -1;
+    }
+    if (location.y+20 > height){
+      velocity.y = velocity.y * -0.8;
     }
   }
 }

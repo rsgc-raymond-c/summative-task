@@ -8,8 +8,8 @@ class Brick {
   Brick(RVector location_) {
 
     location = location_;
-    velocity = new RVector(0, 0);
-    gravity = new RVector(0,0.01);
+    velocity = new RVector(0,0 );
+    gravity = new RVector(0, 0.01);
   }
 
   // update position
@@ -17,6 +17,7 @@ class Brick {
     // Move the ball according to it's speed
     location.add(velocity);
     velocity.add(gravity);
+    
   }
 
   // show the object
@@ -29,15 +30,20 @@ class Brick {
     rect(location.x, location.y, 20, 50);
   }
 
-  void bounce() {
+  void bounce(Roof r) {
 
     if (location.y+50 > height) {
       // We're reducing velocity ever so slightly 
       // when it hits the bottom of the window
-      velocity.y = velocity.y * -0.8; 
+      velocity.y = velocity.y * -0.8;
     }
   }
-  void applyforce() {
-    
+  // check for edges
+  void checkEdges() {
+
+    // Bounce if needed
+    if ((location.x+20 > width) || (location.x < 0)) {
+      velocity.x = velocity.x * -1;
+    }
   }
 }
