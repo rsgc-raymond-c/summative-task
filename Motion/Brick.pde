@@ -43,6 +43,7 @@ class Brick {
       velocity.add(normalForce);
       velocity.add(friction);
     }
+   
   }
   // check for edges
   void checkEdges() {
