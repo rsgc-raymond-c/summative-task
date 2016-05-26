@@ -3,12 +3,14 @@ class Brick {
   RVector location;
   RVector velocity;
   RVector gravity;
+  RVector friction;
+  RVector normalForce;
 
   // constructor
   Brick(RVector location_) {
 
     location = location_;
-    velocity = new RVector(0,0 );
+    velocity = new RVector(0, 0 );
     gravity = new RVector(0, 0.01);
   }
 
@@ -17,7 +19,6 @@ class Brick {
     // Move the ball according to it's speed
     location.add(velocity);
     velocity.add(gravity);
-    
   }
 
   // show the object
@@ -30,12 +31,17 @@ class Brick {
     rect(location.x, location.y, 20, 50);
   }
 
-  void bounce(Roof r) {
+  void addForces() {
+    float frictionForce = (velocity.x/4) * -1;
+    friction = new RVector(frictionForce, 0);
 
+    float negVelocity = velocity.y * -1;
+    normalForce = new RVector(0, negVelocity);
     if (location.y+50 > height) {
       // We're reducing velocity ever so slightly 
       // when it hits the bottom of the window
-      velocity.y = velocity.y * -0.8;
+      velocity.add(normalForce);
+      velocity.add(friction);
     }
   }
   // check for edges
