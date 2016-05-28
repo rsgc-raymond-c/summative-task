@@ -1,7 +1,7 @@
 // Create a space in memory for many Mover objects
 Brick bricks[] = new Brick[2];
 Roof roof = new Roof();
-
+String input = "Please input wind speed:";
 
 
 // Runs once
@@ -49,7 +49,6 @@ void draw() {
   roof.display();
 }
 void keypressed() {
-  String input = "test";
   int windspeed = 0;
   int key = windspeed;
   input = "The Wind Speed is " + windspeed;
