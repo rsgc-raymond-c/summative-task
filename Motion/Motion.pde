@@ -2,7 +2,7 @@
 Brick bricks[] = new Brick[2];
 Roof roof = new Roof();
 String input = "Please input wind speed:";
-int windspeed = 0;
+float windspeed = 0;
 
 
 // Runs once
@@ -37,7 +37,7 @@ void draw() {
   background(255);
   if (keyPressed){
   windspeed = key;
-  beforeInput = "Your wind speed is :";
+  beforeInput = "Your wind speed is : ";
   afterInput = " kilometers per hour";
   input = beforeInput + windspeed + afterInput;
   }
