@@ -2,6 +2,7 @@
 Brick bricks[] = new Brick[2];
 Roof roof = new Roof();
 String input = "Please input wind speed:";
+int windspeed = 0;
 
 
 // Runs once
@@ -30,10 +31,16 @@ void setup() {
 
 // Runs forever
 void draw() {
-
+  String beforeInput = "test";
+  String afterInput = "test";
   // Clear the background
   background(255);
-
+  if (keyPressed){
+  windspeed = key;
+  beforeInput = "Your wind speed is :";
+  afterInput = " kilometers per hour";
+  input = beforeInput + windspeed + afterInput;
+  }
   text(input, 50, 50);
 
   // display all the bricks
@@ -47,10 +54,4 @@ void draw() {
   roof.checkEdges();
   roof.update();
   roof.display();
-}
-void keypressed() {
-  int windspeed = 0;
-  int key = windspeed;
-  input = "The Wind Speed is " + windspeed;
-  
 }

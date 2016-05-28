@@ -4,11 +4,14 @@ class Roof {
   RVector gravity;
   RVector friction;
   RVector normalForce;
+  RVector windspeed;
+  //float xwindspeed = 
 
   Roof() {
     velocity = new RVector(0, 0);
     location = new RVector(240, 100);
     gravity = new RVector(0, 0.01);
+   // windspeed = new RVector(key, 0);
   }
   // update position
   void update() {
@@ -39,21 +42,20 @@ class Roof {
 
     float negVelocity = velocity.y * -1;
     normalForce = new RVector(0, negVelocity);
-
-    for (float i = location.x; i < location.x +60; i+= 15) {
-      
+    
+      for (float i = location.x; i < location.x +60; i+= 15) {
       if (i > b.location.x && i < b.location.x + 20 && location.y+20 > b.location.y && location.y+20 < b.location.y + 50) {
         // We're reducing velocity ever so slightly 
         // when it hits the Brick;
-        velocity.add(normalForce);
+        velocity.sub(velocity);
         velocity.add(friction);
       }
     }
-    
+
     if (location.y+20 > height) {
       velocity.add(normalForce);
       velocity.add(friction);
     }
-    
   }
+  //velocity.add(windspeed)
 }
