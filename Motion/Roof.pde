@@ -8,13 +8,14 @@ class Roof {
   RVector windSpeedVec;
   // windspeed is what the user presses
   float windSpeed = 0;
+ 
   
 
   Roof() {
     velocity = new RVector(0, 0);
     location = new RVector(240, 100);
     gravity = new RVector(0, 0.01);
-    windSpeedVec = new RVector(windSpeed,0);
+    windSpeedVec = new RVector(key+1,0);
   }
   // update position
   void update() {
@@ -22,12 +23,10 @@ class Roof {
     location.add(velocity);
     velocity.add(gravity);
     if (keyPressed){
-      float key = windspeed;
        velocity.add(windSpeedVec);
     }
     println(windspeed);
     println(velocity.x);
-    println(velocity.y);
   }
   // show the object
   void display() {
@@ -48,7 +47,7 @@ class Roof {
   }
   void addForces(Brick b) { 
     // Friction is one quater of the velocity in the x direction
-    float frictionForce = (velocity.x/4) * -1;
+    float frictionForce = velocity.x * -0.05;
     friction = new RVector(frictionForce, 0);
     
     //normal force is the velocity * -1
