@@ -1,6 +1,7 @@
 class Roof {
   //instantiating the vectors
   RVector velocity;
+  // location vector
   RVector location;
   RVector gravity;
   RVector friction;
@@ -14,11 +15,12 @@ class Roof {
 
   Roof() {
     velocity = new RVector(0, 0);
+    //Triangles need 3 points with an xy coordinate, so we'll make three point vectors
     location = new RVector(240, 100);
     gravity = new RVector(0, 0.02);
     // Windspeed is what the user presses aka key, then since it's not as tall as the 
     // bricks it's not affected as much by the wind.
-    windSpeed = new RVector(key+1,0);
+    windSpeed = new RVector(float(key)+1,0);
     isActive = true;
   }
   // update position
@@ -26,12 +28,14 @@ class Roof {
     // Move the roof according to it's speed
     location.add(velocity);
     velocity.add(gravity);
+    // if a key is pressed make the house collapse and add the wind speed
     if (keyPressed){
        velocity.add(windSpeed);
        isActive = false;
+       println(velocity.x);
     }
-    println(windspeed);
-    println(velocity.x);
+   
+    
   }
   // show the object
   void display() {
