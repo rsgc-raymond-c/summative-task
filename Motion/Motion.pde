@@ -44,7 +44,7 @@ void draw() {
   input = beforeInput + windspeed + afterInput;
   }
   text(input, 50, 50);
-  text(title, 320, 50);
+  text(title, 350, 50);
   // display all the bricks
   for (int i = 0; i< bricks.length; i+=1) {
     bricks[i].update();

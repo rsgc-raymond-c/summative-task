@@ -6,8 +6,6 @@ class Brick {
   RVector friction;
   RVector normalForce;
   RVector windSpeed;
-  // The angle that the bricks are on
-  float angle;
 
   // constructor
   Brick(RVector location_) {
@@ -25,12 +23,11 @@ class Brick {
     // Move the ball according to it's speed
     location.add(velocity);
     velocity.add(gravity);
-    // if key is pressed add windspeed and rotate the bricks so that they
-    // fall and land horizontally
+    // if key is pressed add windspeed
     if (keyPressed) {
       // Windspeed is what the user presses aka key, then since it's taller than the roof
       // it is affected more by the wind.
-      x = float(key)-48;
+      x = (float(key)-48)*1.25;
       windSpeed = new RVector(x, 0);
       velocity.add(windSpeed);
     }
