@@ -5,17 +5,21 @@ class Roof {
   RVector gravity;
   RVector friction;
   RVector normalForce;
-  RVector windSpeedVec;
-  // windspeed is what the user presses
-  float windSpeed = 0;
- 
+  RVector windSpeed;
+  // when the windspeed is activated we want the house to collapse
+  // so we need a boolean operator to tell the program whether the roof should rest
+  // on top of the bricks or not
+  boolean isActive;
   
 
   Roof() {
     velocity = new RVector(0, 0);
     location = new RVector(240, 100);
     gravity = new RVector(0, 0.01);
-    windSpeedVec = new RVector(key+1,0);
+    // Windspeed is what the user presses aka key, then since it's not as tall as the 
+    // bricks it's not affected as much by the wind.
+    windSpeed = new RVector(key+1,0);
+    isActive = true;
   }
   // update position
   void update() {
@@ -23,7 +27,8 @@ class Roof {
     location.add(velocity);
     velocity.add(gravity);
     if (keyPressed){
-       velocity.add(windSpeedVec);
+       velocity.add(windSpeed);
+       isActive = false;
     }
     println(windspeed);
     println(velocity.x);
@@ -45,6 +50,7 @@ class Roof {
       velocity.x = velocity.x * -1;
     }
   }
+
   void addForces(Brick b) { 
     // Friction is one quater of the velocity in the x direction
     float frictionForce = velocity.x * -0.05;
@@ -53,7 +59,7 @@ class Roof {
     //normal force is the velocity * -1
     float negVelocity = velocity.y * -1;
     normalForce = new RVector(0, negVelocity);
-    
+       if (isActive == true){
       for (float i = location.x; i < location.x +60; i+= 15) {
       if (i > b.location.x && i < b.location.x + 20 && location.y+20 > b.location.y && location.y+20 < b.location.y + 50) {
         // We're reducing velocity ever so slightly 
@@ -62,6 +68,7 @@ class Roof {
         velocity.add(friction);
       }
     }
+       }
     if (location.y+20 > height) {
       velocity.add(normalForce);
       velocity.add(friction);
