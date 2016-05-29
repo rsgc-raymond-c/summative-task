@@ -15,7 +15,7 @@ class Brick {
     // all bricks start off with a velocity of 0
     velocity = new RVector(0,0 );
     // Force of gravity
-    gravity = new RVector(0, 0.01);
+    gravity = new RVector(0, 0.02);
     // Windspeed is what the user presses aka key, then since it's taller than the roof
     // it is affected more by the wind.
     windSpeed = new RVector(key+3,0);

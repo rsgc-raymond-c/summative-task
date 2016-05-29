@@ -15,7 +15,7 @@ class Roof {
   Roof() {
     velocity = new RVector(0, 0);
     location = new RVector(240, 100);
-    gravity = new RVector(0, 0.01);
+    gravity = new RVector(0, 0.02);
     // Windspeed is what the user presses aka key, then since it's not as tall as the 
     // bricks it's not affected as much by the wind.
     windSpeed = new RVector(key+1,0);
