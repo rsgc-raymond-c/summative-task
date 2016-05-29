@@ -17,19 +17,21 @@ class Brick {
     velocity = new RVector(0, 0 );
     // Force of gravity
     gravity = new RVector(0, 0.02);
-    // Windspeed is what the user presses aka key, then since it's taller than the roof
-    // it is affected more by the wind.
-    windSpeed = new RVector(key+3, 0);
   }
 
   // update position
   void update() {
+    float x = 0;
     // Move the ball according to it's speed
     location.add(velocity);
     velocity.add(gravity);
     // if key is pressed add windspeed and rotate the bricks so that they
     // fall and land horizontally
     if (keyPressed) {
+      // Windspeed is what the user presses aka key, then since it's taller than the roof
+      // it is affected more by the wind.
+      x = float(key)-48;
+      windSpeed = new RVector(x, 0);
       velocity.add(windSpeed);
     }
   }

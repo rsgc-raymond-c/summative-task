@@ -24,6 +24,7 @@ void setup() {
       x = (i+14)*18+i*50;
       y = 310;
     } 
+    // Create a location vector based off of the loop
     RVector location = new RVector(x, y);
     bricks[i] = new Brick(location);
   }
@@ -31,18 +32,19 @@ void setup() {
 
 // Runs forever
 void draw() {
-  String beforeInput = "test";
-  String afterInput = "test";
+  String title = "Wind Simulator";
+  String beforeInput;
+  String afterInput;
   // Clear the background
   background(255);
   if (keyPressed){
-  windspeed = key;
+  windspeed = (float(key)-48)*10;
   beforeInput = "Your wind speed is : ";
   afterInput = " kilometers per hour";
   input = beforeInput + windspeed + afterInput;
   }
   text(input, 50, 50);
-
+  text(title, 320, 50);
   // display all the bricks
   for (int i = 0; i< bricks.length; i+=1) {
     bricks[i].update();

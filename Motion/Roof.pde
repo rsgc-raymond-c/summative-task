@@ -11,6 +11,7 @@ class Roof {
   // so we need a boolean operator to tell the program whether the roof should rest
   // on top of the bricks or not
   boolean isActive;
+ 
   
 
   Roof() {
@@ -20,19 +21,21 @@ class Roof {
     gravity = new RVector(0, 0.02);
     // Windspeed is what the user presses aka key, then since it's not as tall as the 
     // bricks it's not affected as much by the wind.
-    windSpeed = new RVector(float(key)+1,0);
     isActive = true;
   }
   // update position
   void update() {
+    float x = 0;
     // Move the roof according to it's speed
     location.add(velocity);
     velocity.add(gravity);
-    // if a key is pressed make the house collapse and add the wind speed
-    if (keyPressed){
+    // if a key that isn't 0 is pressed make the house collapse and add the wind speed
+    if (keyPressed && float(key)-48 != 0){
+      x = float(key)-48;
+      windSpeed = new RVector(x,0);
        velocity.add(windSpeed);
        isActive = false;
-       println(velocity.x);
+       println("velocity is " +velocity.x);
     }
    
     
