@@ -46,7 +46,7 @@ class Roof {
   void checkEdges() {
 
     // Bounce if needed
-    if ((location.x > width) || (location.x < 0)) {
+    if ((location.x+110 > width) || (location.x < 0)) {
       velocity.x = velocity.x * -1;
     }
   }
