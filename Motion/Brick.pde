@@ -26,7 +26,9 @@ class Brick {
     // if key is pressed add windspeed
     if (keyPressed) {
       // Windspeed is what the user presses aka key, then since it's taller than the roof
-      // it is affected more by the wind.
+      // it is affected more by the wind. floating the key returns the ascii value for a character
+      // and then subtracting 48 brings each number to what it originally is.
+      // Ascii value for 0 is 48 so when you hit 0 it returns 48-48 so the windspeed is 0
       x = (float(key)-48)*1.25;
       windSpeed = new RVector(x, 0);
       velocity.add(windSpeed);
